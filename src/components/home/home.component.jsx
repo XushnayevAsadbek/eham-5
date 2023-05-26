@@ -9,20 +9,12 @@ export const Home = () => {
                 <img src={logo} alt="logo" style={{
                     width:'103px',
                     height:'103px',
-                    // paddingBottom:'65px',
                 }} />
                <p className='bor-top'></p>
                 <img className='img-bottom' src={img} alt="" style={{
                     width:'40px',
                     height:'40px',
-                    // marginTop:'580px',
-                    // marginLeft:'31px',
-                    // marginRight:'24px',
-                    // borderTop:'1px solid red'
-
-                   
-
-                }} />
+                    }} />
             </div>
             <div className="container">
                 <div className='home'>
@@ -35,11 +27,11 @@ export const Home = () => {
                       
                          <form >
                         
-                        <select id='Filter by status' name='Filter by status' >
-                        <option  value="">Filter by status</option>
-                            <option   value="All">All</option>
+                        <select id='Filter by status'  name='Filter by status' >
+                        <option disabled selected>Filter by status</option>
+                            <option value="All" >All</option>
                             <option value="Pending">Pending</option>
-                            <option value="Paid">Paid</option>
+                            <option  value="Paid">Paid</option>
                            
                     
                         </select>
