@@ -1,9 +1,11 @@
 import {LeftOutlined } from '@ant-design/icons'
 import logo from './wievinvoise.img/logo.png'
 import img from './wievinvoise.img/Oval.png'
+import { useParams } from 'react-router-dom';
 import './wievinvoice.css';
 
-export const WievInvoice = () => {
+export const WievInvoice = ({onNavigate}) => {
+onNavigate  =useParams();
     return (
         <div className='wiveInvoise'>
          <div className="header-vertical">

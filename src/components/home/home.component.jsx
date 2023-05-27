@@ -1,8 +1,14 @@
 import {RightOutlined} from '@ant-design/icons'
 import logo from './home.img/logo.png'
 import img from './home.img/Oval.png'
+import { Navigate, useNavigate } from "react-router-dom";
+
 import './home.css'
 export const Home = () => {
+    const navigate= useNavigate();
+    const onNavigate = () =>{
+        navigate('/invoce' )
+    }
     return (
         <div className='home-page' >
             <div className="header-vertical">
@@ -28,7 +34,7 @@ export const Home = () => {
                          <form >
                         
                         <select id='Filter by status'  name='Filter by status' >
-                        <option disabled selected>Filter by status</option>
+                        <option >Filter by status</option>
                             <option value="All" >All</option>
                             <option value="Pending">Pending</option>
                             <option  value="Paid">Paid</option>
