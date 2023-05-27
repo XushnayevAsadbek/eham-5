@@ -1,0 +1,217 @@
+.wiveInvoise {
+    display: flex;
+    gap: 252px;
+}
+
+.header-vertical {
+    height: 100vh;
+    width: 103px;
+    background-color: #373B53;
+    border-radius: 0px 20px 20px 0px;
+    position: relative;
+}
+
+.back {
+    border: none;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    color: #0C0E16;
+    cursor: pointer;
+}
+
+.btn-card {
+    display: flex;
+    justify-content: space-around;
+    width: 730px;
+    height: 87.57px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+    border-radius: 8px;
+    margin-top: 31px;
+
+}
+
+.btn-card--text {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    color: #858BB2;
+    text-align: center;
+    padding: 36px 0 36px 0;
+
+}
+
+.btn-card--box {
+    background: #FF8F00;
+    mix-blend-mode: normal;
+    /* opacity: 0.06; */
+    border-radius: 6px;
+    margin: 24px 0;
+    width: 104px;
+    height: 40px;
+
+
+}
+
+.btn-card--box__text {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    /* color: #FF8F00; */
+    text-align: center;
+    padding: 13px 17px 12px 0;
+}
+
+.btn-card--box__span {
+    padding: 3px 0 2px 5px;
+    font-size: 5px;
+    background: red;
+    border-radius: 50%;
+    margin-right: 10px;
+
+}
+
+.btn-card--edit {
+    background: #F9FAFE;
+    border-radius: 24px;
+    padding: 17px 23px 16px 24px;
+    margin: 20px 0 19px 0;
+    border: none;
+    cursor: pointer;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    color: #7E88C3;
+
+}
+
+.btn-card--edit:hover {
+    background: #DFE3FA;
+}
+
+.btn-card--delete {
+    background: #EC5757;
+    border-radius: 24px;
+    padding: 17px 24px 16px 24px;
+    margin: 20px 0 19px 0;
+    border: none;
+    cursor: pointer;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    color: #FFFFFF;
+
+}
+
+.btn-card--delete:hover {
+    background: #FF9797;
+}
+
+.btn-card--paid {
+    background: #7C5DFA;
+    border-radius: 24px;
+    padding: 17px 23px 16px 24px;
+    margin: 20px 0 19px 0;
+    border: none;
+    cursor: pointer;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    color: #FFFFFF;
+}
+
+.btn-card--paid:hover {
+    background: #9277FF;
+
+}
+
+.box {
+    margin-top: 26.66px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+    border-radius: 8px;
+}
+
+.box-heading {
+
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.8px;
+    color: #0C0E16;
+    margin-bottom: 8px;
+}
+
+.box-text {
+
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    color: #7E88C3;
+}
+
+.box-flex-heading {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.3125px;
+    color: #0C0E16;
+    margin-top: 12px;
+}
+
+.box-price {
+    display: flex;
+    background: #373B53;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+.box-price--text {
+    padding: 31px;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: -0.229167px;
+    color: #FFFFFF;
+}
+
+.box-price-heading {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: right;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+    padding: 24px 32px 24px 0;
+    margin-left: 379px;
+}
