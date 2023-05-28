@@ -82,10 +82,10 @@ export const Editinvoice = () =>{
                                 textAlign:'end'
                                }}  className='edit-box--label' for='nextdata' > Payment Terms</label>
                                  <select className='edit-box--select' name="nextdata" id="nextdata">
-                                    <option value="1">Net 1 Days</option>
-                                    <option value="2">Net 7 Days</option>
-                                    <option value="7">Net 14 Days</option>
-                                    <option  selected value="7">Net 30 Days</option>
+                                    <option value="1">1</option>
+                                    <option value="7">7</option>
+                                    <option value="14">14</option>
+                                    <option  value="30">30</option>
 
 
                                  </select>

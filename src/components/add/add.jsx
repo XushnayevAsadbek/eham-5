@@ -1,6 +1,7 @@
 import {LeftOutlined} from '@ant-design/icons'
 import { useRef } from 'react'
 import {v4} from 'react-uuid'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import logo from '../home/home.img/logo.png'
 import img from '../home/home.img/oval.png'
@@ -20,11 +21,11 @@ export const AddInvoice = ()=>{
     const dicCard =()=>(
         navigate("/")
     );
-
-    const onAdd =(evt) =>{
-        evt.preventDefault();
+// console.log(onAdd);
+    const onAdd =() =>{
+        // evt.preventDefault();
         const newAdd = {
-          userId: +id,
+          userId: 1,
           paid: false,
           email: emailRef.current.value,
           to: nameRef.current.value,
@@ -33,13 +34,13 @@ export const AddInvoice = ()=>{
           createdDate: dateRef.current.value,
           description: descRef.current.value,
           price: +priceRef.current.value,
-          id: v4(),
+          id: v4,
 
         };
           axios.post("https://invoices-8ehs.onrender.com/invoices",
            newAdd, {
             Headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im51cnVsbG9oMjNAZ21haWwuY29tIiwiaWF0IjoxNjg1Mjk4Nzc5LCJleHAiOjE2ODUzMDIzNzksInN1YiI6IjEifQ.T--Zp--SPu638F8gM-bvpW"}`
             }
           }).then(res => {
             console.log(res);
@@ -129,10 +130,10 @@ export const AddInvoice = ()=>{
                                 textAlign:'end'
                                }}  className='add-box--label' for='nextdata' > Payment Terms</label>
                                  <select required ref={termRef} className='add-box--select' name="nextdata" id="nextdata">
-                                    <option value="1">Net 1 Days</option>
-                                    <option value="2">Net 7 Days</option>
-                                    <option value="7">Net 14 Days</option>
-                                    <option  selected value="7">Net 30 Days</option>
+                                    <option value="1">1</option>
+                                    <option value="7">7</option>
+                                    <option value="14">14</option>
+                                    <option  value="7">30</option>
 
 
                                  </select>

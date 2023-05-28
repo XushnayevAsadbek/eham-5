@@ -14,8 +14,9 @@ function App() {
     
    <Routes>
     <Route path="/" element={<Home />} />
+    <Route path="/invoice" element={<Home />} />
     <Route path="/login" element={<Login />} />
-    <Route path='/invoice' element={<WievInvoice />} />
+    <Route path='/invoice/:userId' element={<WievInvoice />} />
     <Route path="/edit" element={<Editinvoice />} />
     <Route path="/add" element={<AddInvoice />} />
 

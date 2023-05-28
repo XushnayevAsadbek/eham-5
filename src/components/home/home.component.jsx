@@ -5,14 +5,14 @@ import { useHomeProps } from './home.props'
 import './home.css'
 import { hoc } from '../../utils'
 import { Link, useNavigate } from 'react-router-dom'
-import {v4} from 'react-uuid'
+import { v4 } from 'react-uuid'
 import { useRef } from 'react'
-export const Home = hoc( useHomeProps, ({ users ,onAdd }) => {
+export const Home = hoc(useHomeProps, ({ users, onAdd }) => {
     const navigate = useNavigate();
-    const inVoice =()=>(
+    const inVoice = () => (
         navigate("/invoice")
     );
-    const addNew =()=>(
+    const addNew = () => (
         navigate("/add")
     )
     const fullName = useRef();
@@ -26,16 +26,16 @@ export const Home = hoc( useHomeProps, ({ users ,onAdd }) => {
     const description = useRef();
     const price = useRef();
 
-    const AddOn=()=>{
-        if (!localStorage.getItem("token")) {
-            navigate("/login")
-        }else{
-            navigate("/add",{state:users});
-        }
-    }
-  console.log(users);
+    // const AddOn = () => {
+    //     if (!localStorage.getItem("token")) {
+    //         navigate("/login")
+    //     } else {
+    //         navigate("/add", { state: users });
+    //     }
+    // }
+    console.log(users);
     return (
-        // <Link to={`/${use.id}`} key={use.id} >
+
 
         <div className='home-page' >
             <div className="header-vertical">
@@ -70,7 +70,7 @@ export const Home = hoc( useHomeProps, ({ users ,onAdd }) => {
                             </select>
                         </form>
 
-                        <button  onClick={()=> AddOn()} className='home-form--btn'> <span className='span-plus--btn'>+</span> New Invoice</button>
+                        <button onClick={addNew} className='home-form--btn'> <span className='span-plus--btn'>+</span> New Invoice</button>
 
                     </div>
                 </div>
@@ -101,43 +101,43 @@ export const Home = hoc( useHomeProps, ({ users ,onAdd }) => {
                         </li>
                     </ul>
                 </div>
-                
 
-                
-                {users && users.map((use,index) => 
 
-                    <ul onClick={inVoice} key={use.id} className='home-list--one' >
+
+                {users && users.map((use, index) =>
+                    <Link to={`/invoice/${use.id}`} key={use.id} >
+                        <ul onClick={inVoice} key={use.id} className='home-list--one' >
                             <li >
-                                <h3 className='home-list--heading'> <span>#</span>{index+1}</h3>
+                                <h3 className='home-list--heading'> <span>#</span>{index + 1}</h3>
                             </li>
-                          
 
-                        <li>
-                              <p className='home-list--text' >{use?.createdDate}</p>
-                              </li>
-                              <li>
-                              <p className='home-list--text'>{use?.to}</p>
-                              </li>
-                              <li> 
-                                 <p className='home-list--money'>£ {use?.price}</p>
-                                </li>
 
-                                <li >
+                            <li>
+                                <p className='home-list--text' >{use?.createdDate}</p>
+                            </li>
+                            <li>
+                                <p className='home-list--text'>{use?.to}</p>
+                            </li>
+                            <li>
+                                <p className='home-list--money'>£ {use?.price}</p>
+                            </li>
+
+                            <li >
                                 <div className='home-list--pending'>
-                                    
-                                <p className='home-list--pending__text'> </p>
+
+                                    <p className='home-list--pending__text'> </p>
                                 </div>
-                               
+
 
                             </li>
                             <li className='home-list-icon'>
-                            <RightOutlined />
+                                <RightOutlined />
                             </li>
 
-                    </ul>
-                       )}
+                        </ul>
+                    </Link>
+                )}
             </div>
         </div>
-        //  </Link>
     )
 })
