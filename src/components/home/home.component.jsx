@@ -1,12 +1,41 @@
 import { RightOutlined } from '@ant-design/icons'
 import logo from './home.img/logo.png'
-import img from './home.img/Oval.png'
+import oval from './home.img/Oval.png'
 import { useHomeProps } from './home.props'
 import './home.css'
 import { hoc } from '../../utils'
-export const Home = hoc( useHomeProps, ({ users }) => {
-   
+import { Link, useNavigate } from 'react-router-dom'
+import {v4} from 'react-uuid'
+import { useRef } from 'react'
+export const Home = hoc( useHomeProps, ({ users ,onAdd }) => {
+    const navigate = useNavigate();
+    const inVoice =()=>(
+        navigate("/invoice")
+    );
+    const addNew =()=>(
+        navigate("/add")
+    )
+    const fullName = useRef();
+    const email = useRef();
+    const img = useRef();
+    const paid = useRef();
+    const to = useRef();
+    const dueDate = useRef();
+    const term = useRef();
+    const createdDate = useRef();
+    const description = useRef();
+    const price = useRef();
+
+    const AddOn=()=>{
+        if (!localStorage.getItem("token")) {
+            navigate("/login")
+        }else{
+            navigate("/add",{state:users});
+        }
+    }
+  console.log(users);
     return (
+        // <Link to={`/${use.id}`} key={use.id} >
 
         <div className='home-page' >
             <div className="header-vertical">
@@ -15,7 +44,7 @@ export const Home = hoc( useHomeProps, ({ users }) => {
                     height: '103px',
                 }} />
                 <p className='bor-top'></p>
-                <img className='img-bottom' src={img} alt="" style={{
+                <img className='img-bottom' src={oval} alt="" style={{
                     width: '40px',
                     height: '40px',
                 }} />
@@ -41,7 +70,7 @@ export const Home = hoc( useHomeProps, ({ users }) => {
                             </select>
                         </form>
 
-                        <button className='home-form--btn'> <span className='span-plus--btn'>+</span> New Invoice</button>
+                        <button  onClick={()=> AddOn()} className='home-form--btn'> <span className='span-plus--btn'>+</span> New Invoice</button>
 
                     </div>
                 </div>
@@ -74,29 +103,29 @@ export const Home = hoc( useHomeProps, ({ users }) => {
                 </div>
                 
 
+                
+                {users && users.map((use,index) => 
 
-                { users &&
-                users.map(({use}) => 
-                    <ul className='home-list--one' >
+                    <ul onClick={inVoice} key={use.id} className='home-list--one' >
                             <li >
-                                <h3 className='home-list--heading'> <span>#</span>{use}</h3>
+                                <h3 className='home-list--heading'> <span>#</span>{index+1}</h3>
                             </li>
-                            {console.log(use)}
+                          
 
                         <li>
-                              <p className='home-list--text' >{use}</p>
+                              <p className='home-list--text' >{use?.createdDate}</p>
                               </li>
                               <li>
-                              <p className='home-list--text'>{use}</p>
+                              <p className='home-list--text'>{use?.to}</p>
                               </li>
                               <li> 
-                                 <p className='home-list--money'>£ {use}</p>
+                                 <p className='home-list--money'>£ {use?.price}</p>
                                 </li>
 
                                 <li >
                                 <div className='home-list--pending'>
                                     
-                                <p className='home-list--pending__text'> {use}</p>
+                                <p className='home-list--pending__text'> </p>
                                 </div>
                                
 
@@ -107,12 +136,8 @@ export const Home = hoc( useHomeProps, ({ users }) => {
 
                     </ul>
                        )}
-
-
-                
-
             </div>
         </div>
-        
+        //  </Link>
     )
 })

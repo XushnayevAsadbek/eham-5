@@ -1,16 +1,39 @@
 import {LeftOutlined } from '@ant-design/icons'
 import logo from './wievinvoise.img/logo.png'
 import img from './wievinvoise.img/Oval.png'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './wievinvoice.css';
 import { hoc } from '../../utils';
+import { useAuth } from "../../hooks/useauth.jsx"
+
 import { useHomeProps } from '../home/home.props';
 
-export const WievInvoice = hoc( useHomeProps , ({ users }) => {
+export const WievInvoice = hoc( useHomeProps , ({ users ,onLogin }) => {
+    const[token]=useAuth();
 // onNavigate  =useParams();
-const {id} = useParams();
+// const params = useParams().userId;
+// console.log(params);
+const navigate =useNavigate();
+const back =()=>{
+    navigate(-1)
+}
+const editBack =()=>{
+    navigate('/edit')
+};
+const onEdit = () =>{
+    if(!localStorage.getItem("token")){
+        navigate("/login")
+    }else{
+        navigate("/edit",{state:users});
+    }
+};
+
+
+// let users =users.find((use)=>use.id==params);
+// console.log(users);
 
     return (
+        
         <div className='wiveInvoise'>
          <div className="wiveInvoise-vertical">
                 <img src={logo} alt="logo" style={{
@@ -26,7 +49,7 @@ const {id} = useParams();
             <div style={{
                 marginTop:'64px',
             }} >
-                <button className='back'> <LeftOutlined style={{
+                <button onClick={back} className='back'> <LeftOutlined style={{
                     color:'#7C5DFA',
                     marginRight:'24px',
                     fontSize:'10px',
@@ -36,7 +59,7 @@ const {id} = useParams();
                     <div className='btn-card--box'>
                    <p className='btn-card--box__text'> <span className='btn-card--box__span'></span> Pending</p>
                     </div>
-                    <button className='btn-card--edit'>Edit</button>
+                    <button  onClick={()=>onEdit()} className='btn-card--edit'>Edit</button>
                     <button className='btn-card--delete' >Delete</button>
                     <button className='btn-card--paid' >Mark as Paid</button>
 
@@ -46,7 +69,7 @@ const {id} = useParams();
                     { users.map((use) =>
                <div style={{
                 padding:'51px 48px',
-               }}>
+               }} >
                <h2 className='box-heading'><span>#</span> {use?.id}</h2>
                 <p className='box-text'>{use?.description}</p>
                 <div style={{
@@ -59,32 +82,32 @@ const {id} = useParams();
                     <li>
                         <p className='box-text'>Invoice Date</p>
                         <h3 className='box-flex-heading'>
-                        21 Aug 2021
+                        {use?.createdDate}
                         </h3>
                     </li>
                     <li>
                         <p className='box-text'>Bill To </p>
                         <h3 className='box-flex-heading'>
-                        Alex Grim
+                        {use?.to}
                         </h3>
                     </li>
                     <li>
                         <p className='box-text'>Sent to </p>
                         <h3 className='box-flex-heading'>
-                        alexgrim@mail.com
+                        {use?.email}
                         </h3>
                     </li>
                 </div>
                  <li>
                  <p className='box-text'>Payment Due </p>
-                 <h3 className='box-flex-heading'> 20 Sep 2021</h3>
+                 <h3 className='box-flex-heading'>{use?.dueDate}</h3>
                  </li>
                  <li className='box-price'>
                 <p className='box-price--text'>
                 Amount Due
                 </p>
                 <h2 className='box-price-heading'>
-                £ 556.00
+                £ {use?.price}
                 </h2>
                  </li>
                </div>

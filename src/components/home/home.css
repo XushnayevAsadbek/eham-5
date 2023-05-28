@@ -119,9 +119,9 @@
 
 
 .home-list--paid {
-    background: #33D69F;
+    background: #71d2b2;
     mix-blend-mode: normal;
-    opacity: 0.06;
+    /* opacity: 0.06; */
     border-radius: 6px;
     padding: 13px 20px 12px 15px;
     width: 140px;
@@ -133,7 +133,7 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-    /* color: #33D69F  ; */
+    color: #08382a  ;
     text-align: center;
 }
 
@@ -183,12 +183,12 @@ span {
     font-size: 12px;
     line-height: 15px;
     letter-spacing: -0.25px;
-    /* color: #FF8F00; */
+    color: #100a02;
     /* color: #fff; */
     text-align: center;
 }
 .home-list--pending {
-    /* background: #FF8F00; */
+    background: #d9a561;
     mix-blend-mode: normal;
     /* opacity: 0.06; */
     border-radius: 6px;

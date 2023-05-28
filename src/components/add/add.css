@@ -95,6 +95,7 @@ border-radius: 24px;
     padding: 16px 24.5px 15.86px 24.58px;
     border: none;
     margin-left: 57px;
+    cursor: pointer;
 
 }
 
@@ -110,6 +111,7 @@ border-radius: 24px;
     color: #FFFFFF;
     padding: 16px 24.5px 15.86px 24.58px;
     border: none;
+    cursor: pointer;
 }
 
 .add-box--btn{

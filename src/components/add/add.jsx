@@ -1,14 +1,63 @@
 import {LeftOutlined} from '@ant-design/icons'
+import { useRef } from 'react'
+import {v4} from 'react-uuid'
 import { useNavigate } from 'react-router-dom'
 import logo from '../home/home.img/logo.png'
 import img from '../home/home.img/oval.png'
-
 import './add.css'
+import { Home } from '../home/home.component'
 export const AddInvoice = ()=>{
+    const nameRef =useRef();
+    const emailRef = useRef();
+    const dateRef = useRef();
+    const termRef =useRef();
+    const descRef = useRef ();
+    const priceRef = useRef ();
     const navigate = useNavigate();
     const onBack=()=>(
         navigate(-1)
     );
+    const dicCard =()=>(
+        navigate("/")
+    );
+
+    const onAdd =(evt) =>{
+        evt.preventDefault();
+        const newAdd = {
+          userId: +id,
+          paid: false,
+          email: emailRef.current.value,
+          to: nameRef.current.value,
+          dueDate: dateRef.current.value,
+          term: +termRef.current.value,
+          createdDate: dateRef.current.value,
+          description: descRef.current.value,
+          price: +priceRef.current.value,
+          id: v4(),
+
+        };
+          axios.post("https://invoices-8ehs.onrender.com/invoices",
+           newAdd, {
+            Headers: {
+                Authorization: `Bearer ${token}`
+            }
+          }).then(res => {
+            console.log(res);
+            emailRef.current.value = "";
+            nameRef.current.value = "";
+            termRef.current.value = "";
+            dateRef.current.value = "";
+            descRef.current.value = "";
+            priceRef.current.value = "";
+            navigate("/"+$(newAdd.id));
+          })
+          .catch(err => console.log(err))
+  };
+
+       
+   
+ 
+    
     return(
         <div  className='add'>
         <div className="add-vertical">
@@ -39,13 +88,13 @@ export const AddInvoice = ()=>{
                         </h2>
                         </li>
                         <li>
-                            <form action="">
+                            <form >
                                 <div style={{
                                     display:'flex',
                                     flexDirection:'column'
                                 }}>
                                 <label className='add-box--label' for='username' >Client’s Name </label>
-                                <input className='add-box--inp'  id='username' type="text"/>
+                                <input ref={nameRef} min="3" max="50" className='add-box--inp'  id='username' type="text"/>
                                 </div>
 
                                 <div style={{
@@ -53,7 +102,7 @@ export const AddInvoice = ()=>{
                                     flexDirection:'column'
                                 }}>
                                 <label  className='add-box--label'for='email' >Client’s Email </label>
-                                <input className='add-box--inp'  name='email' id='email' type="email"/>
+                                <input ref={emailRef} required className='add-box--inp'  name='email' id='email' type="email"/>
                                 </div>
 
                                 <div style={{
@@ -67,7 +116,7 @@ export const AddInvoice = ()=>{
                                  flexDirection:'column'
                                }}>
                                <label className='add-box--label' for='data' >Due Date </label>
-                                <input className='add-box--data'  name='data'id='data' type="date"/>
+                                <input ref={dateRef} required className='add-box--data'  name='data'id='data' type="date"/>
 
                                </div>
                                <div  style={{
@@ -79,7 +128,7 @@ export const AddInvoice = ()=>{
                                 paddingRight:'62px',
                                 textAlign:'end'
                                }}  className='add-box--label' for='nextdata' > Payment Terms</label>
-                                 <select className='add-box--select' name="nextdata" id="nextdata">
+                                 <select required ref={termRef} className='add-box--select' name="nextdata" id="nextdata">
                                     <option value="1">Net 1 Days</option>
                                     <option value="2">Net 7 Days</option>
                                     <option value="7">Net 14 Days</option>
@@ -95,20 +144,20 @@ export const AddInvoice = ()=>{
                                     flexDirection:'column'
                                 }}>
                                 <label className='add-box--label' for='description' >Project Description </label>
-                                <input className='add-box--inp'  name='description' id='description' type="text"/>
+                                <input ref={descRef} className='add-box--inp'  name='description' id='description' type="text"/>
                                 </div>
                                 <div style={{
                                     display:'flex',
                                     flexDirection:'column'
                                 }}>
                                 <label className='add-box--label' for='Price' >Price </label>
-                                <input className='add-box--inp'  name='Price' id='Price' type="number"/>
+                                <input ref={priceRef} min="100" max="1000" required className='add-box--inp'  name='Price' id='Price' type="number"/>
                                 </div>
                             </form>
                         </li>
                         <div className='add-box--btn'>
-                        <button className='add-box--cancel'>Discard</button>
-                <button className='add-box--save'>Save & Send</button>
+                        <button onClick={dicCard} className='add-box--cancel'>Discard</button>
+                <button type='submit' onClick={onAdd} className='add-box--save'>Save & Send</button>
                         </div>
             </ul>
             <div>

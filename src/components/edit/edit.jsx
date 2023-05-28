@@ -8,6 +8,9 @@ export const Editinvoice = () =>{
     const onBack=()=>(
         navigate(-1)
     );
+    const canselback =()=>(
+        navigate("/invoice")
+    )
     return(
         <div  className='edit'>
         <div className="edit-vertical">
@@ -106,7 +109,7 @@ export const Editinvoice = () =>{
                             </form>
                         </li>
                         <div className='edit-box--btn'>
-                        <button className='edit-box--cancel'>Cancel</button>
+                        <button onClick={canselback} className='edit-box--cancel'>Cancel</button>
                 <button className='edit-box--save'>Save Changes</button>
                         </div>
             </ul>
