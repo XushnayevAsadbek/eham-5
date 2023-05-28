@@ -2,7 +2,12 @@ import logo from '../wievInvoice/wievinvoise.img/logo.png';
 import img from '../wievInvoice/wievinvoise.img/oval.png';
 import {LeftOutlined} from '@ant-design/icons'
 import './edit.css'
+import { useNavigate } from 'react-router-dom';
 export const Editinvoice = () =>{
+    const navigate = useNavigate();
+    const onBack=()=>(
+        navigate(-1)
+    );
     return(
         <div  className='edit'>
         <div className="edit-vertical">
@@ -19,7 +24,7 @@ export const Editinvoice = () =>{
             <div style={{
                 marginTop:'64px',
             }} >
-                <button className='back'> <LeftOutlined style={{
+                <button onClick={onBack} className='back'> <LeftOutlined style={{
                     color:'#7C5DFA',
                     marginRight:'24px',
                     fontSize:'10px',

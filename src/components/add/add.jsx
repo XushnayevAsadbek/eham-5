@@ -1,9 +1,14 @@
 import {LeftOutlined} from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
 import logo from '../home/home.img/logo.png'
 import img from '../home/home.img/oval.png'
 
 import './add.css'
 export const AddInvoice = ()=>{
+    const navigate = useNavigate();
+    const onBack=()=>(
+        navigate(-1)
+    );
     return(
         <div  className='add'>
         <div className="add-vertical">
@@ -20,7 +25,7 @@ export const AddInvoice = ()=>{
             <div style={{
                 marginTop:'64px',
             }} >
-                <button className='back'> <LeftOutlined style={{
+                <button onClick={onBack} className='back'> <LeftOutlined style={{
                     color:'#7C5DFA',
                     marginRight:'24px',
                     fontSize:'10px',
