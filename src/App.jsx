@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { AddInvoice } from "./components/add"
 import { Editinvoice } from "./components/edit"
 import { Home } from "./components/home"
 import { Login } from "./components/login"
@@ -14,6 +15,8 @@ function App() {
     <Route path="/login" element={<Login />} />
     <Route path='/invoice/:id' element={<WievInvoice />} />
     <Route path="/edit" element={<Editinvoice />} />
+    <Route path="/add" element={<AddInvoice />} />
+
 
    </Routes>
   )
