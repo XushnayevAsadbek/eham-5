@@ -1,16 +1,14 @@
-import { Button, Form, Input , Row } from "antd";
-import { useRef } from "react";
+import { Form, Input , Row } from "antd";
+import { useRef  } from "react";
 import axios from 'axios'
 import {useAuth} from '../../hooks/useauth.jsx';
-// import { hoc } from "../../utils";
 import './login.css'
-// import { useLoginProps } from "./login.props.jsx";
-
 export const Login =() =>{
       const[ , setToken] = useAuth();
       const emailRef = useRef();
       const passwordRef = useRef();
-      const onLoginHandle = (e) => {
+      const onLoginHandle = () => {
+         console.log("ghrfdb");
          if (emailRef.current.value && passwordRef.current.value) {
            axios
              .post("https://invoices-8ehs.onrender.com/login", {
@@ -36,7 +34,7 @@ export const Login =() =>{
         }} align={"middle"} justify={'center'}>
             <h2 className="login-heading">Login</h2>
            <div >
-           <Form layout="vertical" onFinish={onLoginHandle} >
+           <Form layout="vertical" onFinish={ onLoginHandle } >
                  <Form.Item
                  
                     label ="Email"

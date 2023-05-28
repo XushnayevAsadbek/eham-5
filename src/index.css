@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 body{
-    background-color:  #F2F2F2;;
+    background-color:  #F2F2F2;
+    font-family: 'League Spartan', sans-serif;
 }
 ul{
     list-style: none;
