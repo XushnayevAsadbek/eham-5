@@ -3,12 +3,16 @@ import logo from './wievinvoise.img/logo.png'
 import img from './wievinvoise.img/Oval.png'
 import { useParams } from 'react-router-dom';
 import './wievinvoice.css';
+import { hoc } from '../../utils';
+import { useHomeProps } from '../home/home.props';
 
-export const WievInvoice = ({onNavigate}) => {
-onNavigate  =useParams();
+export const WievInvoice = hoc( useHomeProps , ({ users }) => {
+// onNavigate  =useParams();
+const {id} = useParams();
+
     return (
         <div className='wiveInvoise'>
-         <div className="header-vertical">
+         <div className="wiveInvoise-vertical">
                 <img src={logo} alt="logo" style={{
                     width:'103px',
                     height:'103px',
@@ -38,12 +42,13 @@ onNavigate  =useParams();
 
                 </div>
 
-                <div className='box'>
+                <ul className='box'>
+                    { users.map((use) =>
                <div style={{
                 padding:'51px 48px',
                }}>
-               <h2 className='box-heading'><span>#</span> XM9141</h2>
-                <p className='box-text'>Graphic Design</p>
+               <h2 className='box-heading'><span>#</span> {use?.id}</h2>
+                <p className='box-text'>{use?.description}</p>
                 <div style={{
                     display:'flex',
                     justifyContent:'space-between',
@@ -51,39 +56,42 @@ onNavigate  =useParams();
                     marginTop:'49px',
                     marginBottom:'40px',
                 }}>
-                    <div>
+                    <li>
                         <p className='box-text'>Invoice Date</p>
                         <h3 className='box-flex-heading'>
                         21 Aug 2021
                         </h3>
-                    </div>
-                    <div>
+                    </li>
+                    <li>
                         <p className='box-text'>Bill To </p>
                         <h3 className='box-flex-heading'>
                         Alex Grim
                         </h3>
-                    </div>
-                    <div>
+                    </li>
+                    <li>
                         <p className='box-text'>Sent to </p>
                         <h3 className='box-flex-heading'>
                         alexgrim@mail.com
                         </h3>
-                    </div>
+                    </li>
                 </div>
+                 <li>
                  <p className='box-text'>Payment Due </p>
                  <h3 className='box-flex-heading'> 20 Sep 2021</h3>
-                 <div className='box-price'>
+                 </li>
+                 <li className='box-price'>
                 <p className='box-price--text'>
                 Amount Due
                 </p>
                 <h2 className='box-price-heading'>
                 £ 556.00
                 </h2>
-                 </div>
+                 </li>
                </div>
-            </div>
+  )}
+            </ul>
             </div>
             
         </div>
     );
-}
+})
